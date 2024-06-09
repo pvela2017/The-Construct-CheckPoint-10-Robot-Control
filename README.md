@@ -22,12 +22,12 @@ In this project the CyberLab Rosbot XL, a real hardware holonomic or omni-direct
 1. Clone the repo:
    ```sh
    cd ~ && \
-   git clone https://github.com/pvela2017/The-Construct-CheckPoint-7-Manipulation-Perception
+   git clone https://github.com/pvela2017/The-Construct-CheckPoint-10-Robot-Control
    ```
 2. Compile the simulation:
    ```sh
    source /opt/ros/humble/setup.bash && \
-   cd ~/The-Construct-CheckPoint-7-Manipulation-Perception/ros2_ws && \
+   cd ~/The-Construct-CheckPoint-10-Robot-Control/ros2_ws && \
    colcon build
    ```
      
@@ -40,42 +40,27 @@ In this project the CyberLab Rosbot XL, a real hardware holonomic or omni-direct
 1. Launch the simulation:
    ```sh
    source /opt/ros/humble/setup.bash && \
-   source ~/The-Construct-CheckPoint-7-Manipulation-Perception/ros2_ws/install/setup.bash && \
-   ros2 launch the_construct_office_gazebo warehouse_ur3e.launch.xml
+   source ~/The-Construct-CheckPoint-10-Robot-Control/ros2_ws/install/setup.bash && \
+   ros2 launch rosbot_xl_gazebo empty_simulation.launch.py   # Empty world
+   ros2 launch rosbot_xl_gazebo simulation.launch.py         # Maze world
    ```
-2. Launch move group:
+2. Distance controller:
    ```sh
    source /opt/ros/humble/setup.bash && \
-   source ~/The-Construct-CheckPoint-7-Manipulation-Perception/ros2_ws/install/setup.bash && \
-   ros2 launch my_moveit_config move_group.launch.py    # simulation
-   ros2 launch real_moveit_config move_group.launch.py  # real
+   source ~/The-Construct-CheckPoint-10-Robot-Control/ros2_ws/install/setup.bash && \
+   ros2 run distance_controller distance_controller
    ```
-3. Launch moveit rviz interface:
+3. Turn controller:
    ```sh
    source /opt/ros/humble/setup.bash && \
-   source ~/The-Construct-CheckPoint-7-Manipulation-Perception/ros2_ws/install/setup.bash && \
-   ros2 launch my_moveit_config moveit_rviz.launch.py    # simulation
-   ros2 launch real_moveit_config moveit_rviz.launch.py  # real
+   source ~/The-Construct-CheckPoint-10-Robot-Control/ros2_ws/install/setup.bash && \
+   ros2 run turn_controller turn_controller
    ```
-4. Pick and Place without perception:
+4. Maze solver:
    ```sh
    source /opt/ros/humble/setup.bash && \
-   source ~/The-Construct-CheckPoint-7-Manipulation-Perception/ros2_ws/install/setup.bash && \
-   ros2 launch moveit2_scripts pick_and_place_sim.launch.py    # simulation
-   ros2 launch moveit2_scripts pick_and_place.launch.py        # real
-   ```
-6. Launch perception:
-   ```sh
-   source /opt/ros/humble/setup.bash && \
-   source ~/The-Construct-CheckPoint-7-Manipulation-Perception/ros2_ws/install/setup.bash && \
-   ros2 launch get_cube_pose get_pose_client.launch.py    # simulation
-   ```   
-7. Pick and Place with perception:
-   ```sh
-   source /opt/ros/humble/setup.bash && \
-   source ~/The-Construct-CheckPoint-7-Manipulation-Perception/ros2_ws/install/setup.bash && \
-   ros2 launch moveit2_scripts pick_and_place_perception_sim.launch.py    # simulation
-   ros2 launch moveit2_scripts pick_and_place_perception.launch.py        # real
+   source ~/The-Construct-CheckPoint-10-Robot-Control/ros2_ws/install/setup.bash && \
+   ros2 run pid_maze_solver pid_maze_solver
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -86,5 +71,4 @@ In this project the CyberLab Rosbot XL, a real hardware holonomic or omni-direct
 
 <!-- KEYS -->
 ## Key topics learnt
-* Moveit2.
-* Perception.
+* PID.
