@@ -70,5 +70,5 @@ In this project the CyberLab Rosbot XL, a real hardware holonomic or omni-direct
 [![Demo](https://img.youtube.com/vi/s4jkbh0bWyQ/0.jpg)](https://www.youtube.com/watch?v=s4jkbh0bWyQ)
 
 <!-- KEYS -->
-## Key topics learnt
+## Key Topics Learnt
 * PID.
